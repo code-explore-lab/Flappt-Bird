@@ -283,7 +283,7 @@ cmake -S . -B build -G "MinGW Makefiles" -DFLAPPY_WINDOWS_GUI=ON ...
 |---|---|
 | 开始游戏 | `Space`（待机界面，也支持 `↑`） |
 | 向上飞（速度脉冲） | `Space`（也支持 `↑`） |
-| 重新开始 | `R`（游戏结束后，回到待机界面，再按空格开始） |
+| 重新开始 | `R`（游戏结束后立即开始新一局） |
 | 退出 | `Esc` 或关闭窗口 |
 
 - 穿过一对管道 +1 分；
@@ -327,7 +327,7 @@ enum class State { Ready, Playing, GameOver };
 
 - `Ready`：小鸟原地上下浮动、管道静止，等待空格开始（避免一启动就手忙脚乱）；
 - `Playing`：物理、管道、计分、碰撞全部启用；
-- `GameOver`：世界停止推进，只让小鸟继续坠落到地面，HUD 与结束面板进入展示状态；
+- `GameOver`：世界停止推进，只让小鸟继续坠落到地面，HUD 与结束面板进入展示状态；按 `R` 会 `reset()` 清零后立即 `start()`，直接开始新一局；
 - 按键分发由 `Game::onKeyDown` 按当前状态 `switch`，而不是散落的 bool。
 
 ### 5.2 主循环：固定 60 FPS + 固定物理步长

@@ -265,7 +265,10 @@ void Game::onKeyDown(SDL_Keycode key) {
             if (key == SDLK_SPACE || key == SDLK_UP) flap();    // 空格 / 上方向键上升
             break;
         case State::GameOver:
-            if (key == SDLK_r) reset();                         // R 回到待机界面
+            if (key == SDLK_r) {
+                reset();   // 清零分数 / 管道 / 小鸟（reset 默认回到待机）
+                start();   // 按 R 立即开始新一局，不再要求按空格
+            }
             break;
     }
 }
