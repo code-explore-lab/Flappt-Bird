@@ -1,0 +1,22 @@
+# 构建产物（可执行文件 / DLL / 静态库）
+build/
+build-*/
+out/
+cmake-build-*/
+*.o
+*.obj
+*.a
+*.lib
+*.exe
+*.dll
+*.pdb
+*.ilk
+
+# IDE / 系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 运行日志
+*.log
